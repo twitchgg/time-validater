@@ -2,6 +2,7 @@ package client
 
 import (
 	"fmt"
+	"math"
 	"strings"
 	"time"
 
@@ -31,6 +32,12 @@ func (vc *ValidateClient) _sync(errChan chan error) {
 	}
 	logrus.WithField("prefix", "client.ntp").
 		Tracef("offset: %s", resp.ClockOffset)
+	offset_f64 := math.Abs(float64(resp.ClockOffset))
+	conf_f64 := float64(time.Duration(
+		time.Millisecond * time.Duration(vc.conf.SyncFix)))
+	if offset_f64 < conf_f64 {
+		return
+	}
 	local := time.Now().Add(time.Second * -37)
 	fix := local.Add(resp.ClockOffset)
 	args := fmt.Sprintf("time_s %04d %02d %02d %02d %02d %02d %d",

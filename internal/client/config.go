@@ -6,6 +6,7 @@ type Config struct {
 	CertPath   string
 	ServerName string
 	Sync       bool
+	SyncFix    int
 }
 
 func (conf *Config) Check() error {

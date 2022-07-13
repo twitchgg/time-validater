@@ -12,6 +12,7 @@ var clientEnvs struct {
 	endpoint string
 	ntpAddr  string
 	mt       bool
+	syncFix  int
 }
 var clientCmd = &cobra.Command{
 	Use:    "client",
@@ -31,6 +32,9 @@ func init() {
 	clientCmd.Flags().BoolVar(&clientEnvs.mt,
 		"sync", false,
 		"sync local time")
+	clientCmd.Flags().IntVar(&clientEnvs.syncFix,
+		"sync-fix", 300,
+		"sync fix microsecond")
 }
 
 func _client_prerun(cmd *cobra.Command, args []string) {
@@ -58,6 +62,7 @@ func _client_run(cmd *cobra.Command, args []string) {
 		ServerName: envs.serverName,
 		NTPAddr:    clientEnvs.ntpAddr,
 		Sync:       clientEnvs.mt,
+		SyncFix:    clientEnvs.syncFix,
 	})
 	if err != nil {
 		logrus.WithField("prefix", "cmd.client").

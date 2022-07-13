@@ -7,7 +7,7 @@ import (
 	"time"
 
 	"github.com/sirupsen/logrus"
-	"ntsc.ac.cn/ta/time-validater/pkg/rexec"
+	"ntsc.ac.cn/ta-registry/pkg/rexec"
 )
 
 func (vc *ValidateClient) _startNTP(errChan chan error) {

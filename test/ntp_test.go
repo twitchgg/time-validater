@@ -5,7 +5,7 @@ import (
 	"testing"
 	"time"
 
-	"ntsc.ac.cn/ta/time-validater/pkg/rexec"
+	"ntsc.ac.cn/ta-registry/pkg/rexec"
 	"ntsc.ac.cn/ta/time-validater/pkg/tcpntp"
 )
 

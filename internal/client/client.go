@@ -12,9 +12,9 @@ import (
 	"github.com/sirupsen/logrus"
 	"google.golang.org/grpc"
 	"google.golang.org/protobuf/types/known/timestamppb"
-	"ntsc.ac.cn/ta-registry/pkg/pb"
-	"ntsc.ac.cn/ta-registry/pkg/rpc"
 	"ntsc.ac.cn/ta/time-validater/pkg/tcpntp"
+	"ntsc.ac.cn/tas/tas-commons/pkg/pb"
+	"ntsc.ac.cn/tas/tas-commons/pkg/rpc"
 )
 
 type grpcEntry struct {

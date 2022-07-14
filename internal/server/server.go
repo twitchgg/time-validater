@@ -5,8 +5,8 @@ import (
 
 	cron "github.com/robfig/cron/v3"
 	"google.golang.org/grpc"
-	"ntsc.ac.cn/ta-registry/pkg/pb"
-	"ntsc.ac.cn/ta-registry/pkg/rpc"
+	"ntsc.ac.cn/tas/tas-commons/pkg/pb"
+	"ntsc.ac.cn/tas/tas-commons/pkg/rpc"
 )
 
 type ValidateServer struct {

@@ -11,7 +11,7 @@ import (
 	"github.com/robfig/cron/v3"
 	"github.com/sirupsen/logrus"
 	"google.golang.org/protobuf/types/known/timestamppb"
-	"ntsc.ac.cn/ta-registry/pkg/pb"
+	"ntsc.ac.cn/tas/tas-commons/pkg/pb"
 )
 
 const (

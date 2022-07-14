@@ -4,8 +4,8 @@ import (
 	"github.com/sirupsen/logrus"
 	"github.com/spf13/cobra"
 
-	ccmd "ntsc.ac.cn/ta-registry/pkg/cmd"
 	"ntsc.ac.cn/ta/time-validater/internal/server"
+	ccmd "ntsc.ac.cn/tas/tas-commons/pkg/cmd"
 )
 
 var serverEnvs struct {

@@ -5,8 +5,8 @@ import (
 	"testing"
 	"time"
 
-	"ntsc.ac.cn/ta-registry/pkg/rexec"
 	"ntsc.ac.cn/ta/time-validater/pkg/tcpntp"
+	"ntsc.ac.cn/tas/tas-commons/pkg/rexec"
 )
 
 func TestClient(t *testing.T) {

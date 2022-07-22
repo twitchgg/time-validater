@@ -9,10 +9,11 @@ import (
 )
 
 var clientEnvs struct {
-	endpoint string
-	ntpAddr  string
-	mt       bool
-	syncFix  int
+	endpoint     string
+	ntpAddr      string
+	mt           bool
+	syncFix      int
+	SyncInterval int
 }
 var clientCmd = &cobra.Command{
 	Use:    "client",
@@ -35,6 +36,9 @@ func init() {
 	clientCmd.Flags().IntVar(&clientEnvs.syncFix,
 		"sync-fix", 300,
 		"sync fix microsecond")
+	clientCmd.Flags().IntVar(&clientEnvs.SyncInterval,
+		"sync-interval", 30,
+		"sync second")
 }
 
 func _client_prerun(cmd *cobra.Command, args []string) {
@@ -57,12 +61,13 @@ func _client_prerun(cmd *cobra.Command, args []string) {
 
 func _client_run(cmd *cobra.Command, args []string) {
 	c, err := client.NewValidateClient(&client.Config{
-		Endpoint:   clientEnvs.endpoint,
-		CertPath:   envs.certPath,
-		ServerName: envs.serverName,
-		NTPAddr:    clientEnvs.ntpAddr,
-		Sync:       clientEnvs.mt,
-		SyncFix:    clientEnvs.syncFix,
+		Endpoint:     clientEnvs.endpoint,
+		CertPath:     envs.certPath,
+		ServerName:   envs.serverName,
+		NTPAddr:      clientEnvs.ntpAddr,
+		Sync:         clientEnvs.mt,
+		SyncFix:      clientEnvs.syncFix,
+		SyncInterval: clientEnvs.SyncInterval,
 	})
 	if err != nil {
 		logrus.WithField("prefix", "cmd.client").

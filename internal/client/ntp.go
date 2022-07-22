@@ -19,7 +19,8 @@ func (vc *ValidateClient) _startNTP(errChan chan error) {
 		return
 	}
 	vc.crontab.Start()
-	vc.crontab.AddFunc("@every 30s", func() {
+	interval := fmt.Sprintf("@every %ds", vc.conf.SyncInterval)
+	vc.crontab.AddFunc(interval, func() {
 		vc._sync(errChan)
 	})
 }
